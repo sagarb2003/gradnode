@@ -84,7 +84,7 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
           <dl className="grid gap-3 sm:grid-cols-2">
             {section.items.map(([label, value]) => (
               <div key={label}>
-                <dt className="text-muted-foreground text-sm">{label}</dt>
+                <dt className="text-sm text-muted-foreground">{label}</dt>
                 <dd className="text-sm break-words whitespace-pre-line">
                   {value}
                 </dd>

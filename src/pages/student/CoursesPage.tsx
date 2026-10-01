@@ -34,7 +34,7 @@ export default function CoursesPage() {
           <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {programDetails.map((detail) => (
               <div key={detail.label}>
-                <dt className="text-muted-foreground text-sm">
+                <dt className="text-sm text-muted-foreground">
                   {detail.label}
                 </dt>
                 <dd className="font-medium">{detail.value}</dd>
@@ -54,7 +54,7 @@ export default function CoursesPage() {
               <CardTitle>{course.title}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-muted-foreground">
                 {course.instructor}
               </p>
               <div>
@@ -63,7 +63,7 @@ export default function CoursesPage() {
                   <span className="font-medium">{course.progress}%</span>
                 </div>
                 <div
-                  className="bg-muted h-2 rounded-full"
+                  className="h-2 rounded-full bg-muted"
                   role="progressbar"
                   aria-label={`${course.title} progress`}
                   aria-valuenow={course.progress}
@@ -71,7 +71,7 @@ export default function CoursesPage() {
                   aria-valuemax={100}
                 >
                   <div
-                    className="bg-primary h-2 rounded-full"
+                    className="h-2 rounded-full bg-primary"
                     style={{ width: `${course.progress}%` }}
                   />
                 </div>

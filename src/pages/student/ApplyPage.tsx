@@ -162,7 +162,7 @@ function ApplicationForm({ onSubmitted }: ApplicationFormProps) {
             {submitApplication.isError && (
               <p
                 role="alert"
-                className="bg-destructive/10 text-destructive mt-6 rounded-md p-3 text-sm"
+                className="mt-6 rounded-md bg-destructive/10 p-3 text-sm text-destructive"
               >
                 Something went wrong while submitting. Your answers are saved,
                 so please try again.

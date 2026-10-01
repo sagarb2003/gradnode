@@ -1,3 +1,4 @@
+import { lazy } from 'react'
 import {
   BookOpenIcon,
   ClipboardListIcon,
@@ -10,15 +11,24 @@ import { Toaster } from '@/components/ui/sonner'
 import AppLayout, { type NavItem } from '@/components/layout/AppLayout'
 import HomePage from '@/pages/HomePage'
 import NotFoundPage from '@/pages/NotFoundPage'
-import AdminDashboardPage from '@/pages/admin/AdminDashboardPage'
-import CreateStudentPage from '@/pages/admin/CreateStudentPage'
-import EditStudentPage from '@/pages/admin/EditStudentPage'
-import StudentDetailsPage from '@/pages/admin/StudentDetailsPage'
-import StudentsPage from '@/pages/admin/StudentsPage'
-import ApplyPage from '@/pages/student/ApplyPage'
-import CoursesPage from '@/pages/student/CoursesPage'
-import ProfilePage from '@/pages/student/ProfilePage'
-import StudentDashboardPage from '@/pages/student/StudentDashboardPage'
+import RouteErrorPage from '@/pages/RouteErrorPage'
+
+// Pages are loaded on demand, so each portal only downloads the code it needs
+const AdminDashboardPage = lazy(
+  () => import('@/pages/admin/AdminDashboardPage'),
+)
+const StudentsPage = lazy(() => import('@/pages/admin/StudentsPage'))
+const CreateStudentPage = lazy(() => import('@/pages/admin/CreateStudentPage'))
+const StudentDetailsPage = lazy(
+  () => import('@/pages/admin/StudentDetailsPage'),
+)
+const EditStudentPage = lazy(() => import('@/pages/admin/EditStudentPage'))
+const StudentDashboardPage = lazy(
+  () => import('@/pages/student/StudentDashboardPage'),
+)
+const CoursesPage = lazy(() => import('@/pages/student/CoursesPage'))
+const ProfilePage = lazy(() => import('@/pages/student/ProfilePage'))
+const ApplyPage = lazy(() => import('@/pages/student/ApplyPage'))
 
 const adminNavItems: NavItem[] = [
   { label: 'Dashboard', to: '/admin', icon: LayoutDashboardIcon, end: true },
@@ -33,10 +43,11 @@ const studentNavItems: NavItem[] = [
 ]
 
 const router = createBrowserRouter([
-  { path: '/', element: <HomePage /> },
+  { path: '/', element: <HomePage />, errorElement: <RouteErrorPage /> },
   {
     path: '/admin',
     element: <AppLayout portalName="Admin Panel" navItems={adminNavItems} />,
+    errorElement: <RouteErrorPage />,
     children: [
       { index: true, element: <AdminDashboardPage /> },
       { path: 'students', element: <StudentsPage /> },
@@ -50,6 +61,7 @@ const router = createBrowserRouter([
     element: (
       <AppLayout portalName="Student Portal" navItems={studentNavItems} />
     ),
+    errorElement: <RouteErrorPage />,
     children: [
       { index: true, element: <StudentDashboardPage /> },
       { path: 'courses', element: <CoursesPage /> },

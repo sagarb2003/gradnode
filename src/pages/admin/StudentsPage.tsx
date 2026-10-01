@@ -87,7 +87,7 @@ export default function StudentsPage() {
         <CardContent className="space-y-4">
           <div className="flex flex-col gap-3 sm:flex-row">
             <div className="relative flex-1">
-              <SearchIcon className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+              <SearchIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="search"
                 placeholder="Search by name, email or university"
@@ -158,7 +158,7 @@ export default function StudentsPage() {
                             >
                               {student.firstName} {student.lastName}
                             </Link>
-                            <p className="text-muted-foreground max-w-40 truncate text-xs sm:max-w-none">
+                            <p className="max-w-40 truncate text-xs text-muted-foreground sm:max-w-none">
                               {student.email}
                             </p>
                           </div>
@@ -175,7 +175,10 @@ export default function StudentsPage() {
                       </TableCell>
                       <TableCell className="text-right">
                         <Button variant="ghost" size="sm" asChild>
-                          <Link to={`/admin/students/${student.id}/edit`}>
+                          <Link
+                            to={`/admin/students/${student.id}/edit`}
+                            aria-label={`Edit ${student.firstName} ${student.lastName}`}
+                          >
                             Edit
                           </Link>
                         </Button>

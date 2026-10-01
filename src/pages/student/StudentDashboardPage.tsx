@@ -92,7 +92,7 @@ export default function StudentDashboardPage() {
                   >
                     <div className="min-w-0">
                       <p className="truncate font-medium">{assignment.title}</p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-sm text-muted-foreground">
                         {assignment.courseCode} · Due{' '}
                         {/* Add a time so the date is read in local time, not UTC */}
                         {new Date(
@@ -119,14 +119,14 @@ export default function StudentDashboardPage() {
               </CardHeader>
               <CardContent>
                 {notifications.length === 0 ? (
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     You're all caught up.
                   </p>
                 ) : (
                   <ul className="space-y-3 text-sm">
                     {notifications.map((notification) => (
                       <li key={notification} className="flex gap-2">
-                        <span className="bg-primary mt-1.5 size-2 shrink-0 rounded-full" />
+                        <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
                         {notification}
                       </li>
                     ))}
@@ -154,7 +154,7 @@ function ApplicationStatusCard() {
         {submittedApplication ? (
           <>
             <Badge className="bg-blue-100 text-blue-800">Under review</Badge>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               {submittedApplication.program}, submitted on{' '}
               {new Date(submittedApplication.submittedAt).toLocaleDateString()}
             </p>
@@ -162,7 +162,7 @@ function ApplicationStatusCard() {
         ) : draft ? (
           <>
             <Badge className="bg-amber-100 text-amber-800">In progress</Badge>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               You are on step {draft.step + 1} of {steps.length}.
             </p>
             <Button size="sm" asChild>
@@ -172,7 +172,7 @@ function ApplicationStatusCard() {
         ) : (
           <>
             <Badge variant="secondary">Not started</Badge>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               Apply to a new program in a few minutes.
             </p>
             <Button size="sm" asChild>

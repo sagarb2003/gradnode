@@ -9,13 +9,13 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="bg-muted/40 flex min-h-screen flex-col items-center justify-center p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-muted/40 p-4">
       <div className="mb-10 text-center">
-        <GraduationCapIcon className="text-primary mx-auto mb-4 size-12" />
+        <GraduationCapIcon className="mx-auto mb-4 size-12 text-primary" />
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
           GradNode
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="mt-2 text-muted-foreground">
           Student portal and admin panel. Choose where you want to go.
         </p>
       </div>
@@ -24,7 +24,7 @@ export default function HomePage() {
         <Link to="/admin" className="rounded-xl">
           <Card className="h-full transition-shadow hover:shadow-md">
             <CardHeader>
-              <ShieldCheckIcon className="text-primary mb-2 size-8" />
+              <ShieldCheckIcon className="mb-2 size-8 text-primary" />
               <CardTitle>Admin Panel</CardTitle>
               <CardDescription>
                 Manage students, applications and programs.
@@ -36,7 +36,7 @@ export default function HomePage() {
         <Link to="/student" className="rounded-xl">
           <Card className="h-full transition-shadow hover:shadow-md">
             <CardHeader>
-              <UserIcon className="text-primary mb-2 size-8" />
+              <UserIcon className="mb-2 size-8 text-primary" />
               <CardTitle>Student Portal</CardTitle>
               <CardDescription>
                 View your courses, track your status and apply to programs.
