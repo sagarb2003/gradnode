@@ -50,15 +50,30 @@ DummyJSON accepts create and update requests but **does not save them**. After a
 successful request, the app updates the TanStack Query cache, so your changes
 stay visible while you use the app. They reset when you reload the page.
 
+The Student Portal shows DummyJSON user #1 as the signed-in student. DummyJSON has
+no courses or assignments, so those come from static demo data in
+`src/data/demoCourses.ts`.
+
+## Application form
+
+`/student/apply` is a multi-step form: Personal → Education → Program →
+Additional → Review → Submit. Each step is validated before you can move on.
+
+Your answers and current step are saved to `localStorage` as you type
+(`src/lib/applicationStorage.ts`), so a refresh doesn't lose your progress.
+The draft is cleared after a successful submission.
+
 ## Project structure
 
 ```
 src/
 ├── api/             # API client, types and query hooks
 ├── components/
+│   ├── application/ # Multi-step application form (steps, schema)
 │   ├── layout/      # App shell: sidebar, header, mobile menu
 │   └── ui/          # shadcn/ui components
-├── lib/             # Small shared helpers
+├── data/            # Static demo data (courses, assignments)
+├── lib/             # Small shared helpers (e.g. localStorage)
 ├── pages/
 │   ├── admin/       # Admin panel pages
 │   └── student/     # Student portal pages

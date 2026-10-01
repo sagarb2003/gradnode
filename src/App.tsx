@@ -1,4 +1,10 @@
-import { ClipboardListIcon, LayoutDashboardIcon, UsersIcon } from 'lucide-react'
+import {
+  BookOpenIcon,
+  ClipboardListIcon,
+  LayoutDashboardIcon,
+  UserIcon,
+  UsersIcon,
+} from 'lucide-react'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Toaster } from '@/components/ui/sonner'
 import AppLayout, { type NavItem } from '@/components/layout/AppLayout'
@@ -10,6 +16,8 @@ import EditStudentPage from '@/pages/admin/EditStudentPage'
 import StudentDetailsPage from '@/pages/admin/StudentDetailsPage'
 import StudentsPage from '@/pages/admin/StudentsPage'
 import ApplyPage from '@/pages/student/ApplyPage'
+import CoursesPage from '@/pages/student/CoursesPage'
+import ProfilePage from '@/pages/student/ProfilePage'
 import StudentDashboardPage from '@/pages/student/StudentDashboardPage'
 
 const adminNavItems: NavItem[] = [
@@ -19,6 +27,8 @@ const adminNavItems: NavItem[] = [
 
 const studentNavItems: NavItem[] = [
   { label: 'Dashboard', to: '/student', icon: LayoutDashboardIcon, end: true },
+  { label: 'Courses', to: '/student/courses', icon: BookOpenIcon },
+  { label: 'Profile', to: '/student/profile', icon: UserIcon },
   { label: 'Apply', to: '/student/apply', icon: ClipboardListIcon },
 ]
 
@@ -42,6 +52,8 @@ const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: <StudentDashboardPage /> },
+      { path: 'courses', element: <CoursesPage /> },
+      { path: 'profile', element: <ProfilePage /> },
       { path: 'apply', element: <ApplyPage /> },
     ],
   },
