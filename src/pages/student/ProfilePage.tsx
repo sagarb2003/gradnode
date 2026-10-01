@@ -66,7 +66,7 @@ export default function ProfilePage() {
             <p className="text-xl font-semibold">
               {student.firstName} {student.lastName}
             </p>
-            <p className="text-muted-foreground truncate">{student.email}</p>
+            <p className="truncate text-muted-foreground">{student.email}</p>
           </div>
         </CardContent>
       </Card>
@@ -81,7 +81,7 @@ export default function ProfilePage() {
               <dl className="space-y-3">
                 {section.items.map(([label, value]) => (
                   <div key={label}>
-                    <dt className="text-muted-foreground text-sm">{label}</dt>
+                    <dt className="text-sm text-muted-foreground">{label}</dt>
                     <dd className="font-medium break-words">{value}</dd>
                   </div>
                 ))}

@@ -1,5 +1,10 @@
-import { useState } from 'react'
-import { GraduationCapIcon, MenuIcon, type LucideIcon } from 'lucide-react'
+import { Suspense, useState } from 'react'
+import {
+  GraduationCapIcon,
+  Loader2Icon,
+  MenuIcon,
+  type LucideIcon,
+} from 'lucide-react'
 import { Link, NavLink, Outlet } from 'react-router'
 import { Button } from '@/components/ui/button'
 import {
@@ -27,16 +32,27 @@ export default function AppLayout({ portalName, navItems }: AppLayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <div className="bg-muted/40 min-h-screen">
+    <div className="min-h-screen bg-muted/40">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:shadow"
+      >
+        Skip to content
+      </a>
+
       {/* Desktop sidebar */}
-      <aside className="bg-background fixed inset-y-0 left-0 hidden w-64 flex-col border-r md:flex">
+      <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col border-r bg-background md:flex">
         <Logo />
         <SidebarNav navItems={navItems} />
       </aside>
 
       {/* Mobile sidebar (slides in from the left) */}
       <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-        <SheetContent side="left" className="w-64 p-0">
+        <SheetContent
+          side="left"
+          className="w-64 p-0"
+          aria-describedby={undefined}
+        >
           <SheetHeader className="sr-only">
             <SheetTitle>Navigation</SheetTitle>
           </SheetHeader>
@@ -49,7 +65,7 @@ export default function AppLayout({ portalName, navItems }: AppLayoutProps) {
       </Sheet>
 
       <div className="md:pl-64">
-        <header className="bg-background sticky top-0 z-10 flex h-16 items-center gap-3 border-b px-4 md:px-8">
+        <header className="sticky top-0 z-10 flex h-16 items-center gap-3 border-b bg-background px-4 md:px-8">
           <Button
             variant="ghost"
             size="icon"
@@ -65,10 +81,21 @@ export default function AppLayout({ portalName, navItems }: AppLayoutProps) {
           </Button>
         </header>
 
-        <main className="mx-auto max-w-6xl p-4 md:p-8">
-          <Outlet />
+        <main id="main-content" className="mx-auto max-w-6xl p-4 md:p-8">
+          {/* Shows a spinner while a lazy-loaded page downloads */}
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
+    </div>
+  )
+}
+
+function PageLoader() {
+  return (
+    <div className="flex justify-center py-20" aria-label="Loading page">
+      <Loader2Icon className="size-6 animate-spin text-muted-foreground" />
     </div>
   )
 }
@@ -79,7 +106,7 @@ function Logo() {
       to="/"
       className="flex h-16 items-center gap-2 border-b px-6 font-semibold"
     >
-      <GraduationCapIcon className="text-primary size-6" />
+      <GraduationCapIcon className="size-6 text-primary" />
       GradNode
     </Link>
   )
@@ -101,7 +128,7 @@ function SidebarNav({ navItems, onNavigate }: SidebarNavProps) {
           onClick={onNavigate}
           className={({ isActive }) =>
             cn(
-              'text-muted-foreground hover:bg-muted hover:text-foreground flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+              'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground',
               isActive && 'bg-muted text-foreground',
             )
           }

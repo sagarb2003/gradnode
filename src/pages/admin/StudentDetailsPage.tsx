@@ -6,7 +6,7 @@ import ErrorState from '@/components/ErrorState'
 import StudentAvatar from '@/components/StudentAvatar'
 import StudentStatusBadge from '@/components/StudentStatusBadge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 
 export default function StudentDetailsPage() {
@@ -71,9 +71,9 @@ export default function StudentDetailsPage() {
         <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <StudentAvatar student={student} className="size-16" />
           <div className="flex-1">
-            <CardTitle className="text-xl">
+            <h2 className="text-xl font-semibold">
               {student.firstName} {student.lastName}
-            </CardTitle>
+            </h2>
             <div className="mt-2">
               <StudentStatusBadge status={student.status} />
             </div>
@@ -89,7 +89,7 @@ export default function StudentDetailsPage() {
           <dl className="grid gap-4 border-t pt-6 sm:grid-cols-2">
             {details.map((detail) => (
               <div key={detail.label}>
-                <dt className="text-muted-foreground text-sm">
+                <dt className="text-sm text-muted-foreground">
                   {detail.label}
                 </dt>
                 <dd className="font-medium break-words">{detail.value}</dd>

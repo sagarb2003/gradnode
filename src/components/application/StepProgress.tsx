@@ -12,9 +12,9 @@ export default function StepProgress({ currentStep }: { currentStep: number }) {
         <p className="mb-2 text-sm font-medium">
           Step {currentStep + 1} of {steps.length}: {steps[currentStep].title}
         </p>
-        <div className="bg-muted h-2 rounded-full">
+        <div className="h-2 rounded-full bg-muted">
           <div
-            className="bg-primary h-2 rounded-full transition-all"
+            className="h-2 rounded-full bg-primary transition-all"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -52,7 +52,7 @@ export default function StepProgress({ currentStep }: { currentStep: number }) {
                 {step.title}
               </span>
               {index < steps.length - 1 && (
-                <span className="bg-border mx-2 h-px flex-1" />
+                <span className="mx-2 h-px flex-1 bg-border" />
               )}
             </li>
           )

@@ -36,7 +36,8 @@ export function TextField({
         id={name}
         type={type}
         aria-invalid={!!errorMessage}
-        {...register(name)}
+        // Number inputs give us a number instead of a string
+        {...register(name, { valueAsNumber: type === 'number' })}
       />
       <FieldError>{errorMessage}</FieldError>
     </Field>

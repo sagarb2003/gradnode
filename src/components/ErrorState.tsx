@@ -13,9 +13,9 @@ export default function ErrorState({
   return (
     <div
       role="alert"
-      className="border-destructive/30 bg-destructive/5 flex flex-col items-center gap-3 rounded-xl border p-8 text-center"
+      className="flex flex-col items-center gap-3 rounded-xl border border-destructive/30 bg-destructive/5 p-8 text-center"
     >
-      <AlertCircleIcon className="text-destructive size-8" />
+      <AlertCircleIcon className="size-8 text-destructive" />
       <p className="text-sm">{message}</p>
       {onRetry && (
         <Button variant="outline" size="sm" onClick={onRetry}>

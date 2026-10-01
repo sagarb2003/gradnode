@@ -100,7 +100,7 @@ function RecentStudents({ students }: { students: Student[] }) {
                   <p className="truncate font-medium">
                     {student.firstName} {student.lastName}
                   </p>
-                  <p className="text-muted-foreground truncate text-sm">
+                  <p className="truncate text-sm text-muted-foreground">
                     {student.university}
                   </p>
                 </div>
@@ -144,9 +144,9 @@ function TopUniversities({ students }: { students: Student[] }) {
                   <span className="truncate">{university}</span>
                   <span className="font-medium">{count}</span>
                 </div>
-                <div className="bg-muted h-2 rounded-full">
+                <div className="h-2 rounded-full bg-muted">
                   <div
-                    className="bg-primary h-2 rounded-full"
+                    className="h-2 rounded-full bg-primary"
                     style={{ width: `${(count / highestCount) * 100}%` }}
                   />
                 </div>

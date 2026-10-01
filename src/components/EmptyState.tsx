@@ -8,10 +8,10 @@ type EmptyStateProps = {
 export default function EmptyState({ title, description }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center gap-2 py-10 text-center">
-      <InboxIcon className="text-muted-foreground size-8" />
+      <InboxIcon className="size-8 text-muted-foreground" />
       <p className="font-medium">{title}</p>
       {description && (
-        <p className="text-muted-foreground text-sm">{description}</p>
+        <p className="text-sm text-muted-foreground">{description}</p>
       )}
     </div>
   )
