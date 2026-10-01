@@ -14,6 +14,8 @@ export type NavItem = {
   label: string
   to: string
   icon: LucideIcon
+  // Only highlight when the URL matches exactly (used for dashboard links)
+  end?: boolean
 }
 
 type AppLayoutProps = {
@@ -95,8 +97,7 @@ function SidebarNav({ navItems, onNavigate }: SidebarNavProps) {
         <NavLink
           key={item.to}
           to={item.to}
-          // "end" stops "/admin" from staying active on "/admin/students"
-          end
+          end={item.end}
           onClick={onNavigate}
           className={({ isActive }) =>
             cn(

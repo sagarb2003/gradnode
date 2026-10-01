@@ -13,6 +13,7 @@ A Student Portal and Admin Panel built with React and TypeScript.
 - [shadcn/ui](https://ui.shadcn.com)
 - [React Router](https://reactrouter.com)
 - [TanStack Query](https://tanstack.com/query) for fetching and caching data
+- [React Hook Form](https://react-hook-form.com) + [Zod](https://zod.dev) for forms and validation
 - ESLint + Prettier
 
 ## Getting started
@@ -44,6 +45,10 @@ There is no real backend. Student data comes from the free
 
 DummyJSON users don't have an enrolment status. We derive a fixed status
 (`active`, `pending` or `graduated`) from each user's id in `src/api/students.ts`.
+
+DummyJSON accepts create and update requests but **does not save them**. After a
+successful request, the app updates the TanStack Query cache, so your changes
+stay visible while you use the app. They reset when you reload the page.
 
 ## Project structure
 

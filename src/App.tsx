@@ -1,20 +1,24 @@
 import { ClipboardListIcon, LayoutDashboardIcon, UsersIcon } from 'lucide-react'
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import { Toaster } from '@/components/ui/sonner'
 import AppLayout, { type NavItem } from '@/components/layout/AppLayout'
 import HomePage from '@/pages/HomePage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import AdminDashboardPage from '@/pages/admin/AdminDashboardPage'
+import CreateStudentPage from '@/pages/admin/CreateStudentPage'
+import EditStudentPage from '@/pages/admin/EditStudentPage'
+import StudentDetailsPage from '@/pages/admin/StudentDetailsPage'
 import StudentsPage from '@/pages/admin/StudentsPage'
 import ApplyPage from '@/pages/student/ApplyPage'
 import StudentDashboardPage from '@/pages/student/StudentDashboardPage'
 
 const adminNavItems: NavItem[] = [
-  { label: 'Dashboard', to: '/admin', icon: LayoutDashboardIcon },
+  { label: 'Dashboard', to: '/admin', icon: LayoutDashboardIcon, end: true },
   { label: 'Students', to: '/admin/students', icon: UsersIcon },
 ]
 
 const studentNavItems: NavItem[] = [
-  { label: 'Dashboard', to: '/student', icon: LayoutDashboardIcon },
+  { label: 'Dashboard', to: '/student', icon: LayoutDashboardIcon, end: true },
   { label: 'Apply', to: '/student/apply', icon: ClipboardListIcon },
 ]
 
@@ -26,6 +30,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <AdminDashboardPage /> },
       { path: 'students', element: <StudentsPage /> },
+      { path: 'students/new', element: <CreateStudentPage /> },
+      { path: 'students/:id', element: <StudentDetailsPage /> },
+      { path: 'students/:id/edit', element: <EditStudentPage /> },
     ],
   },
   {
@@ -42,5 +49,10 @@ const router = createBrowserRouter([
 ])
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Toaster position="top-right" richColors />
+    </>
+  )
 }

@@ -9,8 +9,8 @@ import EmptyState from '@/components/EmptyState'
 import ErrorState from '@/components/ErrorState'
 import PageHeader from '@/components/PageHeader'
 import StatCard from '@/components/StatCard'
+import StudentAvatar from '@/components/StudentAvatar'
 import StudentStatusBadge from '@/components/StudentStatusBadge'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   Card,
   CardContent,
@@ -95,13 +95,7 @@ function RecentStudents({ students }: { students: Student[] }) {
           <ul className="divide-y">
             {students.map((student) => (
               <li key={student.id} className="flex items-center gap-3 py-3">
-                <Avatar>
-                  <AvatarImage src={student.image} alt="" />
-                  <AvatarFallback>
-                    {student.firstName[0]}
-                    {student.lastName[0]}
-                  </AvatarFallback>
-                </Avatar>
+                <StudentAvatar student={student} />
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-medium">
                     {student.firstName} {student.lastName}
