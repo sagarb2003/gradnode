@@ -12,6 +12,7 @@ A Student Portal and Admin Panel built with React and TypeScript.
 - [Tailwind CSS](https://tailwindcss.com)
 - [shadcn/ui](https://ui.shadcn.com)
 - [React Router](https://reactrouter.com)
+- [TanStack Query](https://tanstack.com/query) for fetching and caching data
 - ESLint + Prettier
 
 ## Getting started
@@ -36,10 +37,19 @@ Then open http://localhost:5173.
 | `npm run typecheck` | Run the TypeScript compiler         |
 | `npm run format`    | Format all files with Prettier      |
 
+## Mock API
+
+There is no real backend. Student data comes from the free
+[DummyJSON](https://dummyjson.com/docs/users) `users` API, so no API key is needed.
+
+DummyJSON users don't have an enrolment status. We derive a fixed status
+(`active`, `pending` or `graduated`) from each user's id in `src/api/students.ts`.
+
 ## Project structure
 
 ```
 src/
+├── api/             # API client, types and query hooks
 ├── components/
 │   ├── layout/      # App shell: sidebar, header, mobile menu
 │   └── ui/          # shadcn/ui components
